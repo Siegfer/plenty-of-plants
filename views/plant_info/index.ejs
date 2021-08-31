@@ -1,0 +1,25 @@
+
+<head>
+    <title>Plants Information</title>
+</head>
+<body>
+    <form method="GET" action="/plant_info">
+        <label for="nameFilter">Filter by Name</label>
+        <input id="nameFilter" type="text" name="nameFilter">
+        <input type="submit">
+    </form>
+    <ul>
+        <% myInfo.forEach(function(info, index) { %>
+        <li>
+            <%= info.name %> is the Scientific Name for <br>
+            the more commonly known plant <%= info.common %>.
+                <a href="/plant_info/edit/<%= index %>">Edit</a>
+                <form method="POST" action="/plant_info/<%= index %>/?_method=DELETE">
+                    <input type="submit" value="Delete">
+                </form>
+        </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
+   

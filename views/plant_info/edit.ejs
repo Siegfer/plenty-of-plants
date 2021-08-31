@@ -1,0 +1,9 @@
+<form method="POST" action="/plant_info/<%=infoId%>/?_method=PUT">
+    <label>Name</label>
+    <input type="text" name="name" value="<%= info.name %>">
+    <label>Common Name</label>
+    <input type="text" name="common" value="<%= info.common %>">
+    <label>Light/Medium/Strong Light</label>
+    <input type="text" name="light" value="<%= info.light %>">
+    <input type="submit">
+</form>
