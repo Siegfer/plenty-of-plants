@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
 			return info.name.toLowerCase() === nameFilter.toLocaleLowerCase()
 		})
 	}
+	console.log(infoData)
 	res.render('plant_info/index', { myInfo: infoData })
 })
 
@@ -39,15 +40,26 @@ router.get('/edit/:idx', (req, res) => {
 		info: infoData[req.params.idx],
 		infoId: req.params.idx
 	})
+	console.log(infoData)
 })
 
 //PUT route
 router.put('/:idx', (req, res) => {
+	//get plant data
 	let information = fs.readFileSync('./plant_info.json')
+	// parse the data
 	let infoData = JSON.parse(information)
-	infoData[req.params.idx].name = req.body.name
-	infoData[req.params.idx].common = req.body.common
-	infoData[req.params.idx].light = req.body.light
+	//update the data
+	let info = infoData[req.params.idx]
+	info.name = req.body.name
+	info.common = req.body.common
+	info.light = req.body.light
+
+	console.log(infoData)
+	// question == did the info get changed in the array
+	// infoData[req.params.idx].name = req.body.name
+	// infoData[req.params.idx].common = req.body.common
+	// infoData[req.params.idx].light = req.body.light
 	fs.writeFileSync('./plant_info.json', JSON.stringify(infoData))
 	res.redirect('/plant_info')
 })

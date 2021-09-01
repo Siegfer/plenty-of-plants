@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 app.use(methodOverride('_method'))
-// app.use(express.urlendcoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }))
 app.use('/plant_img', require('./controllers/plant_img'))
 app.use('/plant_info', require('./controllers/plant_info'))
 
